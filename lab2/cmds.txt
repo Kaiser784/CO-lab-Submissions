@@ -1,0 +1,5 @@
+nasm -f elf ALU.asm
+
+ld -m elf_i386 ALU.o
+
+./a.out
