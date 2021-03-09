@@ -38,11 +38,6 @@ reverse_array:
 
     ret
 
-assgn_max:
-
-    mov max, [ecx]
-    ret
-
 _start:
     
     mov	ecx, msga
@@ -56,20 +51,23 @@ _start:
     xor ecx, ecx            
     xor edx, edx
 
-    mov ebx, array.size
+    mov ebx, 4
     mov ecx, array
 
-max_num:  
-    
-    cmp [ecx], [ecx + 4]
-    jg assgn_max
+    mov eax, [ecx]
+    add ecx, 4
 
+max_num:
+    cmp eax, [ecx]
+    jge next
+    mov eax, [ecx]
+
+next:
+    add ecx, 4
     dec ebx
-    jnz max_num
-
-    mov eax, [max]
-
-    xor ecx, ecx            
+    jnz max_num    
+    
+    xor ecx, ecx
     xor edx, edx
     call print_integer
 
@@ -93,9 +91,13 @@ section .data
     msgb db 0xA, 0xD
     lenb equ $ - msgb
 
-    array: dd 123, 949, 729, 820, 234
-    .size: equ $-array
+global array
+array:
+    dd 583
+    dd 118
+    dd 171
+    dd 129
+    dd 632
 
 section .bss                ; space reserved for storing values
     result resb 1
-    max resb 1

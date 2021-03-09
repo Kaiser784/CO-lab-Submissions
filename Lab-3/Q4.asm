@@ -51,7 +51,7 @@ _start:
     xor ecx, ecx            
     xor edx, edx
 
-    mov ebx, 5
+    mov ebx, 6
     mov ecx, array
 
 array_sum:  
@@ -93,6 +93,7 @@ array:
     dd 17
     dd 12
     dd 6
+    dd 32
 
 section .bss                ; space reserved for storing values
     result resb 1
