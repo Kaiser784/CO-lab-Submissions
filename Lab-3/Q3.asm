@@ -38,6 +38,20 @@ reverse_array:
 
     ret
 
+factorial:
+    cmp ebx, 1
+    jg next
+    mov eax, 1
+    ret
+
+next:
+    push ebx
+    dec ebx
+    call factorial
+    pop ebx
+    mul ebx
+    ret
+
 _start:
     
     mov	ecx, msga
@@ -51,14 +65,12 @@ _start:
     xor ecx, ecx            
     xor edx, edx
 
-    mov eax, 1
     mov ebx, [fact]
+    call factorial
 
-factorial:  
-
-
-
- 
+    xor ecx, ecx            
+    xor edx, edx
+    call print_integer
 
 Exit:
     ; Final next line
@@ -74,7 +86,7 @@ Exit:
         
 section .data
 
-    fact dd 26
+    fact dd 8
 
     msga db "The Factorial is "
     lena equ $ - msga
@@ -85,3 +97,5 @@ section .data
 
 section .bss                ; space reserved for storing values
     result resb 1
+    temp1 resb 1
+    temp2 resb 1
