@@ -1,0 +1,7 @@
+nasm -f elf Q1.asm && ld -m elf_i386 Q1.o && ./a.out
+
+nasm -f elf Q2.asm && ld -m elf_i386 Q2.o && ./a.out
+
+nasm -f elf Q3.asm && ld -m elf_i386 Q3.o && ./a.out
+
+nasm -f elf Q4.asm && ld -m elf_i386 Q4.o && ./a.out
