@@ -69,7 +69,7 @@ General Lab instructions
 2. Given a positive number, write ALP for verifying whether it is an Armstrong number or not, and display the
    result as the output. (An Armstrong number is an n-digit number such that sum of its digits raised to the power n is the number itself.
    Armstrong numbers are 1, 2, 3, 4, 5, 6, 7, 8, 9, 153, 370, 371, 407, 1634, 8202, 9474, 54748, etc.. 
-      For eg: 153 because 13 + 53 + 33 = 153, 1634 because 14 + 64 + 34 + 44 = 1634, and 54748 because 55 + 45 + 75 + 45 + 85 =54748.)
+      For eg: 153 because 1^3 + 5^3 + 3^3 = 153, 1634 because 1^4 + 6^4 + 3^4 + 4^4 = 1634, and 54748 because 5^5 + 4^5 + 7^5 + 4^5 + 8^5 =54748.)
 
 3. Given a positive number, write ALP for verifying whether it is a palindrome number or not, and display the result as the output. 
       An palindrome number is a number that remains the same when its digits are reversed. For eg: 16461
