@@ -95,9 +95,9 @@ global array
 array:
     dd 583
     dd 118
-    dd 171
+    dd 674
     dd 129
-    dd 632
+    dd 171
 
 section .bss                ; space reserved for storing values
     result resb 1

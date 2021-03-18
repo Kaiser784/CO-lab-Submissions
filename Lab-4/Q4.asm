@@ -39,61 +39,115 @@ reverse_array:
     ret
 
 _start:
-    
-    mov	ecx, msga
-    mov	edx, lena
-    mov	ebx, 1	            ;file descriptor
-    mov	eax, 4	            ;system write
-    int	0x80	            ;call kernel
 
     xor eax, eax            ;clearing stack
     xor ebx, ebx
     xor ecx, ecx            
     xor edx, edx
 
-    mov ebx, 6
-    mov ecx, array
+    mov ecx, string
 
-array_sum:  
+checks:
+    cmp byte[ecx], 0         ; checks if at the end of string
+    je add_words
 
-    add eax, [ecx]        ; adding number in array yo eax  
-    add ecx, 4            ; go to next elment 
-    dec ebx               ; iterator  
-    jnz array_sum           ; loops until last element  
+    cmp byte[ecx], 32h      ; ascii for space
+    je add_words
 
-    xor ecx, ecx            
+    call check_vowels
+
+    inc ecx                    ; size of string
+    inc dword[char]            
+    jmp checks
+
+add_words:
+    inc dword[words]
+
+    cmp byte[ecx], 0
+    je numbers
+
+    inc ecx 
+    inc dword[char]
+    jmp checks
+
+check_vowels:
+    mov edx, vowels
+    mov ebx, 10
+
+array_loop:                     ; loops through vowel array to check for vowels
+    mov al, byte[edx]
+    cmp al, byte[ecx]
+    je add_vows
+
+    inc edx
+    dec ebx
+    jnz array_loop
+
+    xor eax, eax
     xor edx, edx
 
-    call print_integer
+add_cons:                       ; if no vowels found add to cons and return
+    inc dword[cons]
+    ret
+add_vows:
+    inc dword[vows]
+    ret
 
-Exit:
+numbers:
+    mov eax, dword[char]
+    xor ecx, ecx
+    xor edx, edx
+    call print_integer
+    call line
+
+    mov eax, dword[words]
+    xor ecx, ecx
+    xor edx, edx
+    call print_integer
+    call line
+
+    mov eax, dword[vows]
+    xor ecx, ecx
+    xor edx, edx
+    call print_integer
+    call line
+
+    mov eax, dword[cons]
+    xor ecx, ecx
+    xor edx, edx
+    call print_integer
+    call line
+
+Exit:    
+    ; Exit
+    mov	eax, 1	            ;system exit
+    int	0x80	            ;call kernel
+
+line:
     ; Final next line
     mov	ecx, msgb
     mov	edx, lenb
     mov	ebx, 1	            ;file descriptor
     mov	eax, 4	            ;system write
-    int	0x80	            ;call kernel  
-    
-    ; Exit
-    mov	eax, 1	            ;system exit
-    int	0x80	            ;call kernel
-        
+    int	0x80	            ;call kernel 
+
+    ret
+
 section .data
 
-    msga db "The sum of the array is "
-    lena equ $ - msga
+    string db "Hello IIITDM Kancheepuram", 0
+
+    vows dd 0
+    cons dd 0
+    char dd 0
+    words dd 0
+
+    count dd 0
+
+    vowels db "a", "e", "i", "o", "u", "A", "E", "I", "O", "U"
 
     msgb db 0xA, 0xD
     lenb equ $ - msgb
-
-global array
-array:
-    dd 99
-    dd 99
-    dd 99
-    dd 99
-    dd 99
-    dd 999
 
 section .bss                ; space reserved for storing values
     result resb 1

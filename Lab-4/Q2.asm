@@ -1,7 +1,6 @@
 global _start
 
 section .text
-
 ;<======= Printing an integer =========>
 print_integer:
 
@@ -37,11 +36,15 @@ reverse_array:
     xor edx, edx
 
     ret
-
 _start:
-    
-    mov	ecx, msga
-    mov	edx, lena
+
+    mov eax, [num]
+    xor ecx, ecx
+    xor edx, edx
+    call print_integer
+
+    mov	ecx, msgb
+    mov	edx, lenb
     mov	ebx, 1	            ;file descriptor
     mov	eax, 4	            ;system write
     int	0x80	            ;call kernel
@@ -51,20 +54,60 @@ _start:
     xor ecx, ecx            
     xor edx, edx
 
-    mov ebx, 6
-    mov ecx, array
+    mov eax, dword[num]
+    mov ebx, 10
 
-array_sum:  
+separate:                   ; pushes all the digits to stack
+    div ebx
+    push edx
 
-    add eax, [ecx]        ; adding number in array yo eax  
-    add ecx, 4            ; go to next elment 
-    dec ebx               ; iterator  
-    jnz array_sum           ; loops until last element  
-
-    xor ecx, ecx            
     xor edx, edx
+    inc ecx
 
-    call print_integer
+    cmp eax, 0 
+    jne separate
+
+    mov dword[count], ecx
+    mov dword[stack], ecx
+
+    xor ebx, ebx
+
+next_add:                   ; adding the power of the next digit to the sum
+    mov eax, 1
+    pop edx                 ; getting digit from stack
+
+powers:
+    push edx                
+    mul edx
+    pop edx
+
+    dec ecx
+    jnz powers
+
+    mov ecx, dword[count]
+    add ebx, eax            ; adding to the sum
+
+    dec dword[stack]
+    jne next_add            ;looping to add teh next digit
+
+    cmp ebx, dword[num]
+    jne not_arm
+
+arm:
+    mov	ecx, msga
+    mov	edx, lena
+    mov	ebx, 1	            ;file descriptor
+    mov	eax, 4	            ;system write
+    int	0x80	            ;call kernel  
+    
+    jmp Exit
+
+not_arm:
+    mov	ecx, msgc
+    mov	edx, lenc
+    mov	ebx, 1	            ;file descriptor
+    mov	eax, 4	            ;system write
+    int	0x80	            ;call kernel  
 
 Exit:
     ; Final next line
@@ -80,20 +123,18 @@ Exit:
         
 section .data
 
-    msga db "The sum of the array is "
+    num dd 153
+    count dd 0
+    stack dd 0
+
+    msga db "The number is an Armstrong Number"
     lena equ $ - msga
+    
+    msgc db "The number is NOT an Armstrong number"
+    lenc equ $ - msgc
 
     msgb db 0xA, 0xD
     lenb equ $ - msgb
-
-global array
-array:
-    dd 99
-    dd 99
-    dd 99
-    dd 99
-    dd 99
-    dd 999
 
 section .bss                ; space reserved for storing values
     result resb 1

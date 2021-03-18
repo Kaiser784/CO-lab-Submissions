@@ -86,7 +86,7 @@ Exit:
         
 section .data
 
-    fact dd 8
+    fact dd 10
 
     msga db "The Factorial is "
     lena equ $ - msga
