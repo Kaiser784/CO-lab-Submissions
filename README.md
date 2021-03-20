@@ -78,3 +78,19 @@ General Lab instructions
    and display the result as the output. 
       For eg: given ‘Hello IIITDM Kancheepuram’, then program should display number of words = 3, characters = 25, vowels = 10, consonants = 13
 ```
+---
+## Lab5
+```
+1. By taking one example program (i.e., any program done in labs so far), write the ALPs for the following
+   addressing modes
+      1. Direct Addressing Mode
+      2. Indirect Addressing Mode
+      3. Immediate Addressing Mode
+      4. Direct-Offset Addressing Mode
+      5. Relative Addressing Mode
+      6. Indexed Addressing Mode
+      7. Register Addressing Mode
+      8. Register Indirect Addressing Mode
+      9. Auto-Increment Addressing Mode
+      10. Auto-Decrement Addressing Mode
+```
