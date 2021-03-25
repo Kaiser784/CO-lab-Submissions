@@ -9,6 +9,9 @@ General Lab instructions
 - [ ] Attach the screen shots of your programs with compilation, execution and outputs details.
 - [ ] Submit all the answers as a single PDF file named with your roll number.
 
+This Lab covers [NASM](#nasm) and [Verilog](#verilog)
+
+# NASM 
 
 ## Lab 1
 ```
@@ -94,3 +97,6 @@ General Lab instructions
       9. Auto-Increment Addressing Mode
       10. Auto-Decrement Addressing Mode
 ```
+
+# Verilog
+
