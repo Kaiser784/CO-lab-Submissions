@@ -107,7 +107,7 @@ Exit:
         
 section .data
 
-    num dd 12621
+    num dd 112311
     count dd 0
 
     msga db "The number is a PALINDROME"

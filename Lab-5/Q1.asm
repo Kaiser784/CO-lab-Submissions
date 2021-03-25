@@ -38,13 +38,15 @@ reverse_array:
 
     ret
 
-indirect_addr: 
-    mov eax, [array_table]      ;2
+direct_addr: 
+    mov eax, [array_table]      ;1
     add eax, [array_table + 4]  ;4,5
+    add eax, array_table[4]
     ret
-direct_addr:
-    mov ebx, 100                
-    add eax, [num]              ;1
+indirect_addr:
+    mov ebx, num                ;2
+    add eax, [ebx]
+    mov ebx, 100
     add eax, ebx                ;7
     ret
 immed_addr:
@@ -172,10 +174,10 @@ section .data
     num dd 100
     array_table dd 100, 100, 100, 100
 
-    msg1 db 0xA,"Direct and Register addressing                  : "
+    msg1 db 0xA,"InDirect and Register addressing                : "
     len1 equ $ - msg1
 
-    msg2 db 0xA,"InDirect, Direct Offset and relative addressing : "
+    msg2 db 0xA,"Direct, Direct Offset and relative addressing   : "
     len2 equ $ - msg2
 
     msg3 db 0xA,"Immediate addressing                            : "

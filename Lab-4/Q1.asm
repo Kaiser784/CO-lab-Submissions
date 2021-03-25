@@ -55,7 +55,7 @@ _start:
     xor edx, edx
 
     mov eax, [num]
-    mov ebx, 2
+    mov ebx, 1
 
 check:
     div ebx
@@ -107,7 +107,7 @@ Exit:
         
 section .data
 
-    num dd 23
+    num dd 7
 
     msga db "The number is PRIME"
     lena equ $ - msga
