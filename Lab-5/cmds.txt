@@ -1,0 +1,1 @@
+nasm -f elf Q1.asm && ld -m elf_i386 Q1.o && ./a.out
