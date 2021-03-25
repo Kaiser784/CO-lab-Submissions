@@ -13,12 +13,12 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
 
 # NASM 
 
-## Lab 1
+## Lab-1
 ```
 1.Print "Hello World" string
 ```
 ---
-## Lab 2
+## Lab-2
 ```
 1. Choose two positive numbers 100 ≤ P1, P2 ≤ 999. Write ALP for addition of these two numbers (i.e. P1+P2) 
    and display the result as the output.
@@ -46,7 +46,7 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
     and display the result as the output.
 ```
 ---
-## Lab 3
+## Lab-3
 ```
 1. Choose five numbers between 100 and 999. 
    Write ALP by using conditional instructions for finding the largest of these five numbers
@@ -65,7 +65,7 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
    and display the result as the output.
 ```
 ---
-## Lab4
+## Lab-4
 ```
 1. Given a positive number, write ALP for verifying whether it is a prime number or not, and display the result as the output.
 
@@ -82,7 +82,7 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
       For eg: given ‘Hello IIITDM Kancheepuram’, then program should display number of words = 3, characters = 25, vowels = 10, consonants = 13
 ```
 ---
-## Lab5
+## Lab-5
 ```
 1. By taking one example program (i.e., any program done in labs so far), write the ALPs for the following
    addressing modes
@@ -97,6 +97,11 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
       9. Auto-Increment Addressing Mode
       10. Auto-Decrement Addressing Mode
 ```
+---
 
 # Verilog
+## Lab-6
+```
+1. Implement the Verilog modeling for the Carry Lookahead Adder of 4 bits.
+```
 
