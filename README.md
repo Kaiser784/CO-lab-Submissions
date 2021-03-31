@@ -5,11 +5,6 @@ Kadali Paul Babu    - CED19I002
 ```
 This Lab covers [NASM](#nasm) and [Verilog](#verilog)
 
-General Lab instructions
-- [ ] Compile and execute those programs and display the outputs.
-- [ ] Attach the screen shots of your programs with compilation, execution and outputs details.
-- [ ] Submit all the answers as a single PDF file named with your roll number.
-
 # NASM 
 
 ## Lab-1
