@@ -3,13 +3,12 @@ Computer Organization Practice Lab Course @IIITDM, 2021.
 ```
 Kadali Paul Babu    - CED19I002
 ```
+This Lab covers [NASM](#nasm) and [Verilog](#verilog)
+
 General Lab instructions
-- [ ] Write the Assembly Language Program (ALP) for the following questions.
 - [ ] Compile and execute those programs and display the outputs.
 - [ ] Attach the screen shots of your programs with compilation, execution and outputs details.
 - [ ] Submit all the answers as a single PDF file named with your roll number.
-
-This Lab covers [NASM](#nasm) and [Verilog](#verilog)
 
 # NASM 
 
