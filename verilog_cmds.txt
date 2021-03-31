@@ -1,0 +1,3 @@
+iverilog filname.v
+
+./a.out
