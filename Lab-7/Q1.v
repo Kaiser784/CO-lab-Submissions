@@ -20,54 +20,67 @@ module full_adder(a, b, cin, sum, carry);
 
 endmodule
 
+module CLA_4bit(a, b, cin, sum, cout);
+    input[3:0] a, b;
+    input cin;
+    output[3:0] sum;
+    output cout;
+    
+    wire[3:0] cprop, cgen, carry;
+    
+    assign cprop = a ^ b; //xor
+    assign cgen = a & b;  //and
+
+    //from k-maps cout = (ai.bi)[carry generator] + (ai xor bi)[carry propagator].cin
+
+    assign carry[0] = cin;
+    assign carry[1] = cgen[0] | (cprop[0] & carry[0]);
+    assign carry[2] = cgen[1] | (cprop[1] & cgen[0]) | (cprop[1] & cprop[0] & carry[0]);
+    assign carry[3] = cgen[2] | (cprop[2] & cgen[1]) | (cprop[2] & cprop[1] & cgen[0]) | (cprop[2] & cprop[1] & cprop[0] & carry[0]);
+    assign cout     = cgen[3] | (cprop[3] & cgen[2]) | (cprop[3] & cprop[2] & cgen[1]) | (cprop[3] & cprop[2] & cprop[1] & carry[0]) | (cprop[2] & cprop[2] & cprop[1] & cprop[0] & carry[0]);
+
+    assign sum = cprop ^ carry;
+
+endmodule
+
 module wallace(a, b, product);
 
     input[3:0] a, b;
     output[7:0] product;
 
-    wire s11, s12, s13, s14, s15, s22, s23, s24, s25, s26; //first and second stage reduction sum
-    wire c11, c12, c13, c14, c15, c22, c23, c24, c25, c26; //first and second stage reduction carry
-    wire s32, s33, s34, s35, s36, s37; //final stage sum
-    wire c32, c33, c34, c35, c36, c37; //final stage carry
+    wire s11, s12, s13, c11, c12, c13; //first stage sum and carry
+    wire s21, s22, s23, c21, c22, c23; //second stage sum and carry
 
     //partial products
-    wire[6:0] p0, p1, p2, p3;
+    wire[3:0] p0, p1, p2, p3;
 
     assign p0 = a & {4{b[0]}};
     assign p1 = a & {4{b[1]}};
     assign p2 = a & {4{b[2]}};
     assign p3 = a & {4{b[3]}};
 
-    //final result
-    assign product[0] = p0[0];
-    assign product[1] = s11;
-    assign product[2] = s22;
-    assign product[3] = s32;
-    assign product[4] = s34;
-    assign product[5] = s35;
-    assign product[6] = s36;
-    assign product[7] = s37;
-
     //stage-1
-    half_adder ha11(p0[1], p1[0], s11, c11);
-    full_adder fa12(p0[2], p1[1], p2[0], s12, c12);
-    full_adder fa13(p0[3], p1[2], p2[1], s13, c13);
-    full_adder fa14(p1[3], p2[2], p3[1], s14, c14);
-    half_adder ha15(p2[3], p3[2], s15, c15);
+    half_adder ha11(p1[1], p0[2], s11, c11);
+    full_adder fa12(p0[3], p1[2], p2[1], s12, c12);
+    full_adder fa13(p1[3], p2[2], p3[1], s13, c13);
 
     //stage-2
-    half_adder ha22(c11, s12, s22, c22);
-    full_adder fa23(p3[0], c12, s13, s23, c23);
-    full_adder fa24(c13, c32, s14, s24, c24);
-    full_adder fa25(c14, c24, s15, s25, c25);
-    full_adder fa26(c15, c25, p3[3], s26, c26);
+    half_adder ha21(c11, s12, s21, c21);
+    half_adder ha22(c12, s13, s22, c22);
+    full_adder fa23(c13, p3[2], p2[3], s23, c23);
 
+    wire[3:0] sum11, sum12;
+    wire[3:0] sum21, sum22;
+
+    assign sum11 = {s21, s11, p0[1], p0[0]};
+    assign sum12 = {p3[0], p2[0], p1[0], 1'b0};
+    assign sum21 = {1'b0, c23, c22, c21};
+    assign sum22 = {1'b0, p3[3], s23, s22};
+
+    wire cout1, cout2;
     //final result
-    half_adder ha32(c22, s23, s32, c32);
-    half_adder ha34(c23, s24, s34, c34);
-    half_adder ha35(c34, s25, s35, c35);
-    half_adder ha36(c35, s26, s36, c36);
-    half_adder ha37(c36, c26, s37, c37);
+    CLA_4bit cla1(sum11, sum12, 1'b0, product[3:0], cout1);
+    CLA_4bit cla2(sum21, sum22, cout1, product[7:4], cout2);
 
 endmodule
 
