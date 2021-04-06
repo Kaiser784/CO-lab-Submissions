@@ -98,4 +98,9 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
 ```
 1. Implement the Verilog modeling for the Carry Lookahead Adder of 4 bits.
 ```
-
+---
+## Lab-7
+```
+1. Implement the Verilog modeling for the Wallace Tree Multiplier as explained in the lab session. 
+   The Wallace Tree Multiplier shall take two inputs, each one of 4 bits and shall produce output of 8 bits.
+```
