@@ -99,7 +99,7 @@ module wallace_multiplier_tb;
             b = 4'b0001;
         #10 a = 4'b0001;
             b = 4'b1111;
-        #10 a = 4'b1010;
+        #10 a = 4'b1111;
             b = 4'b1111;
     end
 
