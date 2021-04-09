@@ -104,3 +104,16 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
 1. Implement the Verilog modeling for the Wallace Tree Multiplier as explained in the lab session. 
    The Wallace Tree Multiplier shall take two inputs, each one of 4 bits and shall produce output of 8 bits.
 ```
+---
+## Lab-8
+```
+1. Implement the Verilog modeling for the Logic Unit as explained in the lab session. 
+   The Logic Unit shall take two inputs, each one of size 6 bits and shall produce output according to following logic operations.
+      1. AND
+      2. OR
+      3. XOR
+      4. Complement
+      5. Logical Shift
+      6. Circular Shift
+      7. Arithmetic Shift
+```
