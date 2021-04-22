@@ -117,3 +117,39 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
       6. Circular Shift
       7. Arithmetic Shift
 ```
+---
+## Midsem
+Viva 5 marks
+```
+1. Given a positive number N, write an ALP for printing the Fibonacci series upto Nth number, and display the
+   result as the output. (Fibonacci series: 0, 1, 1, 2, 3, 5, 8, 13, 21, 44, 67,...). (5 Marks)
+
+2. Given a positive number, write an ALP for finding whether it is a Dudeney number or not, and display the
+   result as the output. 
+   (A Dudeney number is an N digit number such that sum of its digits is equal to the cube root of the number itself.
+   There are exactly six such numbers: 1, 512, 4913, 5832, 17576, 19683). (5 Marks)
+
+      512 = 83 and 5 + 1 + 2 = 8
+      4913 = 173 and 4 + 9 + 1 + 3 = 17
+      5832 = 183 and 5 + 8 + 3 + 2 = 18
+      17576 = 263 and 1 + 7 + 5 + 7 + 6 = 26
+      19683 = 273 and 1 + 9 + 6 + 8 + 3 = 27
+
+3. Given two strings A and B, write an ALP for finding whether there is a substring or not and display the result
+   as the output. 
+   (A is a substring of B or B is a substring of A). For eg. A = IIITDM, B = IIT. Here B is substring of A, therefore there is a          
+   substring. (5 Marks)
+```
+---
+## Endsem
+Viva 5 marks
+```
+1. Given two positive integers A and B, write an ALP for finding Greatest Common Divisor (GCD) and 
+   Least Common Multiple (LCM) of A and B, and display the result as the output. 
+   (For Eg: A = 4 and B = 6, then GCD = 2 and LCM= 12.) (10 Marks)
+
+2. Implement the Verilog modeling for the Division Unit without directly using divide and modulo operations.
+   The Division can be either Restoring Division or Non-Restoring Division. The Division Unit shall take two inputs
+   A and B (each one of 10 bits), and shall produce result (A/B) of 10 bits and remainder of 10 bits. (For Eg: A =
+   23 and B = 6, then result(A/B) = 3 and remainder = 5.). Write a test set for the same. (15 Marks)
+```
