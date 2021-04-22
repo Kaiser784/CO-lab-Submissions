@@ -118,7 +118,7 @@ This Lab covers [NASM](#nasm) and [Verilog](#verilog)
       7. Arithmetic Shift
 ```
 ---
-## Midsem
+# Midsem
 Viva 5 marks
 ```
 1. Given a positive number N, write an ALP for printing the Fibonacci series upto Nth number, and display the
@@ -141,7 +141,7 @@ Viva 5 marks
    substring. (5 Marks)
 ```
 ---
-## Endsem
+# Endsem
 Viva 5 marks
 ```
 1. Given two positive integers A and B, write an ALP for finding Greatest Common Divisor (GCD) and 
